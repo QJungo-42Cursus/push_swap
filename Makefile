@@ -12,6 +12,7 @@ NAME =		push_swap
 all: ${NAME}
 
 ${NAME}: ${OBJS}
+	@make all -C libft
 	${CC} ${CFLAGS} ${OBJS} -L./libft -lft -o ${NAME} 
 
 clean:

@@ -1,6 +1,8 @@
 #include"libft/libft.h"
 #include"push_swap.h"
 
+#include <stdio.h>
+
 t_bool	is_close_to_top(int len, int pos)
 {
 	int	bottom_dif;

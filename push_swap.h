@@ -6,7 +6,7 @@
 /*   By: qjungo <qjungo@student.42lausanne.ch>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/13 13:41:14 by qjungo            #+#    #+#             */
-/*   Updated: 2022/11/06 18:53:59 by qjungo           ###   ########.fr       */
+/*   Updated: 2022/11/06 19:49:37 by qjungo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ void	r_rotate(t_list **stack);
 
 // utils
 void	print_stack_el(void *val);
+void	log_lists(t_list *a, t_list *b);
 
 // algos
 void	bubble_sort(t_list **stack_a, t_list **stack_b);

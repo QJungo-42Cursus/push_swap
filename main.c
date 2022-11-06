@@ -6,7 +6,7 @@
 /*   By: qjungo <qjungo@student.42lausanne.ch>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/13 21:42:46 by qjungo            #+#    #+#             */
-/*   Updated: 2022/11/06 18:50:54 by qjungo           ###   ########.fr       */
+/*   Updated: 2022/11/06 19:43:03 by qjungo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ static int	is_list_correct(int argc, char **argv)
 	int		i;
 	int		j;
 
+	// TODO stop si 2x le meme !!
 	i = 0;
 	while (i < argc)
 	{

@@ -3,6 +3,7 @@
 
 static t_bool	is_close_to_top(int len, int pos);
 
+
 void	bubble_sort(t_list **stack_a, t_list **stack_b)
 ///	1er algo pas tres malin :
 ///		il va prendre le plus petit et le mettre dans la stack b, 
@@ -32,22 +33,35 @@ void	bubble_sort(t_list **stack_a, t_list **stack_b)
 
 		/* Push le plus petit dans b */
 		t_bool	is_closer_top = is_close_to_top(i, min_pos);
+		ft_printf("size : %d min %d i %d\n", ft_lstsize(*stack_a), min_pos, i);
+//#define CACA
+#ifdef CACA
+		if (min_pos != 1 && min_pos < i)
+		{
+			if (is_closer_top)
+				to_top(stack_a, min_pos, 'a');
+			else 
+				to_bottom(stack_a, min_pos, i, 'a');
+		}
+#else
 		while (min_pos != 1 && min_pos < i)
 		{
-			//printf("min %d min_pos %d i %d \n ", *min, min_pos, i);
 			if (is_closer_top)
 			{
-				operation_handler(stack_a, stack_b, RA);
+				operation_handler(stack_a, NULL, RA);
 				min_pos--;
 			}
 			else 
 			{
-				operation_handler(stack_a, stack_b, RRA);
+				operation_handler(stack_a, NULL, RRA);
 				min_pos++;
 			}
 		}
+#endif
 		operation_handler(stack_a, stack_b, PB);
+		log_lists(*stack_a, *stack_b);
 	}
+
 	while (*stack_b)
 		operation_handler(stack_a, stack_b, PA);
 }

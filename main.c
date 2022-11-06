@@ -6,7 +6,7 @@
 /*   By: qjungo <qjungo@student.42lausanne.ch>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/13 21:42:46 by qjungo            #+#    #+#             */
-/*   Updated: 2022/08/13 21:53:51 by qjungo           ###   ########.fr       */
+/*   Updated: 2022/11/06 18:50:54 by qjungo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,27 +18,13 @@
 #include"libft/libft.h"
 #include"push_swap.h"
 
-void	init_stack_a(int argc, char **argv, t_list **stack_a)
-{
-	short	i;
-	int	*numbers;
-
-	numbers = malloc(sizeof(int) * argc);
-	numbers[0] = atoi(argv[0]);	
-	*stack_a = ft_lstnew(&numbers[0]);
-	i = 1;
-	while (i < argc)
-	{
-		numbers[i] = atoi(argv[i]);
-		ft_lstadd_back(stack_a, ft_lstnew(&numbers[i]));
-		i++;
-	}
-}
+static void	init_stack_a(int argc, char **argv, t_list **stack_a);
+static int	is_list_correct(int argc, char **argv);
 
 int main(int argc, char **argv)
 {
-	short	i;
 	t_list	*stack_a;
+	t_list	*stack_b;
 	
 	argc--;
 	argv++;
@@ -47,13 +33,53 @@ int main(int argc, char **argv)
 		ft_putendl_fd("Error\n (not enought argc)", 1);
 		return (0);
 	}
+	if (!is_list_correct(argc, argv))
+	{
+		ft_putendl_fd("Error\n (args are not integers)", 1);
+		return (0);
+	}
+	stack_a = NULL;
+	stack_b = NULL;
+	init_stack_a(argc, argv, &stack_a);
+	push_swap(&stack_a, &stack_b);
+	ft_lstclear(&stack_a, free);
+	ft_lstclear(&stack_b, free);
+}
+
+static void	init_stack_a(int argc, char **argv, t_list **stack_a)
+{
+	int		i;
+	int		*numbers;
+
 	i = 0;
 	while (i < argc)
 	{
-		// TODO : check si ce n'est pas un int (string / long / ...)
+		numbers = malloc(sizeof(int));
+		*numbers = ft_atoi(argv[i]);
+		ft_lstadd_back(stack_a, ft_lstnew(numbers));
 		i++;
 	}
-	stack_a = NULL;
-	init_stack_a(argc, argv, &stack_a);
-	push_swap(&stack_a);
+}
+
+static int	is_list_correct(int argc, char **argv)
+{
+	int		i;
+	int		j;
+
+	i = 0;
+	while (i < argc)
+	{
+		j = 0;
+		if (argv[i][0] == '-')
+			j++;
+		while (argv[i][j] != '\0')
+		{
+			if (!ft_isdigit(argv[i][j]))
+				return (0);
+			j++;
+		}
+		i++;
+		// TODO gerer les longs ints ???
+	}
+	return (1);
 }

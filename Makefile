@@ -1,13 +1,16 @@
+NAME =		push_swap
+
 CC =		gcc
 CFLAGS =	-Wall -Wextra -Werror
 RM =		rm -f
 SRCS =		main.c \
-		push_swap.c \
-		operations.c \
-		operation_handler.c
+			push_swap.c \
+			operations.c \
+			operation_handler.c \
+			utils.c \
+			bubble_sort.c
 
 OBJS =		${SRCS:.c=.o}
-NAME =		push_swap
 
 all: ${NAME}
 
@@ -28,10 +31,22 @@ re: fclean all
 # TESTS
 LEAKS =	valgrind -q --leak-check=full --track-origins=yes
 
-test: all
-	./push_swap 2 1 3 6 5 8
 
-ulibft:
-	cd ../libft/ && make bonus
-	cp ../libft/libft.h ./libft/
-	cp ../libft/libft.a ./libft/
+#ARGS = 2 1 3 90 "-8" 40 6
+
+ARGS = 1 2 3 4 6 -80 -90 -81 5 0 -50 -51 10000 500
+
+leaks: all
+ifeq ($(shell uname), Linux)
+	$(LEAKS) ./push_swap $(ARGS)
+else 
+	#leaks mac
+endif		
+
+test: all
+ifeq ($(shell uname), Linux)
+	#$(LEAKS) ./push_swap 
+	./push_swap $(ARGS) | ./checker_linux $(ARGS)
+else 
+	 ./push_swap $(ARGS) | ./checker_linux $(ARGS)
+endif		

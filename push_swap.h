@@ -6,7 +6,7 @@
 /*   By: qjungo <qjungo@student.42lausanne.ch>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/13 13:41:14 by qjungo            #+#    #+#             */
-/*   Updated: 2022/08/13 21:51:51 by qjungo           ###   ########.fr       */
+/*   Updated: 2022/11/06 18:53:59 by qjungo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define PUSH_SWAP_H
 # include"libft/libft.h"
 
-typedef enum {
+typedef enum e_operation {
 	SA,
 	SB,
 	SS,
@@ -28,12 +28,18 @@ typedef enum {
 	RRR,
 }	t_operation;
 
-void	push_swap(t_list **initial_stack);
+void	push_swap(t_list **a, t_list **b);
 
 void	operation_handler(t_list **stack_a, t_list **stack_b, t_operation operation);
 void	swap_top(t_list *stack); // SA & SB
 void	push(t_list **stack_from, t_list **stack_to);
 void	rotate(t_list **stack);
 void	r_rotate(t_list **stack);
+
+// utils
+void	print_stack_el(void *val);
+
+// algos
+void	bubble_sort(t_list **stack_a, t_list **stack_b);
 
 #endif /* PUSH_SWAP_H */

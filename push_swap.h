@@ -1,7 +1,6 @@
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
-# include"libft/libft.h"
-# define LOG
+# include "libft/libft.h"
 
 typedef enum e_stack {
 	A = 65,
@@ -53,8 +52,10 @@ t_list	*get_next_(t_list *current, t_list **a, t_list **b, t_stack stack);
 int		top_val(t_list *a, t_list *b, t_stack s);
 
 // mov
-void	to_top(t_list **stack, int pos, t_stack s);
-void	to_bottom(t_list **stack, int pos, int len, t_stack s);
+void	repeat_op(t_list **a, t_list **b, int n, t_operation op);
+void	down(t_list **stack, int distance, t_stack s);
+void	up(t_list **stack, int distance, t_stack s);
+void	to_stack_top(t_list **stack, int val, t_stack s_from);
 void	to_other_stack(t_list **a, t_list **b, int val, t_stack s_from);
 
 // new

@@ -1,36 +1,6 @@
 #include"libft/libft.h"
 #include"push_swap.h"
 
-static void	op2(t_list **stack_a, t_list **stack_b, t_operation operation);
-static void	print_operation(t_operation operation);
-
-void	operation_handler(t_list **stack_a, t_list **stack_b, t_operation operation)
-{
-#ifdef LOG
-	static int	calls = 0;
-
-	calls++;
-	ft_printf("%d\t", calls);
-#endif
-	print_operation(operation);
-	if (operation == SA)
-		swap_top(*stack_a);
-	else if (operation == SB)
-		swap_top(*stack_a);
-	else if (operation == SS)
-	{
-		swap_top(*stack_a);
-		swap_top(*stack_b);
-	}
-	else if (operation == PA)
-		push(stack_b, stack_a);
-	else if (operation == PB)
-		push(stack_a, stack_b);
-	else
-		op2(stack_a, stack_b, operation);
-}
-
-
 static void	print_operation(t_operation operation)
 {
 	if (operation == SA)
@@ -77,4 +47,30 @@ static void	op2(t_list **stack_a, t_list **stack_b, t_operation operation)
 		r_rotate(stack_a);
 		r_rotate(stack_b);
 	}
+}
+
+void	operation_handler(t_list **stack_a, t_list **stack_b, t_operation operation)
+{
+#ifdef LOG
+	static int	calls = 0;
+
+	calls++;
+	ft_printf("%d\t", calls);
+#endif
+	print_operation(operation);
+	if (operation == SA)
+		swap_top(*stack_a);
+	else if (operation == SB)
+		swap_top(*stack_a);
+	else if (operation == SS)
+	{
+		swap_top(*stack_a);
+		swap_top(*stack_b);
+	}
+	else if (operation == PA)
+		push(stack_b, stack_a);
+	else if (operation == PB)
+		push(stack_a, stack_b);
+	else
+		op2(stack_a, stack_b, operation);
 }

@@ -7,7 +7,11 @@ SRCS =		main.c \
 			push_swap.c \
 			operations.c \
 			operation_handler.c \
-			utils.c \
+			log.c \
+			partition.c \
+			new.c \
+			mov.c \
+			get.c \
 			bubble_sort.c
 
 OBJS =		${SRCS:.c=.o}
@@ -19,9 +23,11 @@ ${NAME}: ${OBJS}
 	${CC} ${CFLAGS} ${OBJS} -L./libft -lft -o ${NAME} 
 
 clean:
+	#@make clean -C libft
 	${RM} ${OBJS}
 
 fclean: clean
+	#@make fclean -C libft
 	${RM} ${NAME}
 
 re: fclean all
@@ -42,6 +48,10 @@ ifeq ($(shell uname), Linux)
 else 
 	#leaks mac
 endif		
+
+qt: all
+	clear
+	./push_swap 1 80 5 4 61 -60 10
 
 test: all
 ifeq ($(shell uname), Linux)

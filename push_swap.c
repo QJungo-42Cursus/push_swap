@@ -1,39 +1,6 @@
 #include"libft/libft.h"
 #include"push_swap.h"
 
-void	median_of_three(t_list **a, int lst_len, int fi);
-
-
-void	to_top(t_list **stack, int pos, char s)
-{
-	t_operation	op;
-
-	if (s == 'a')
-		op = RA;
-	else
-		op = RB;
-	while (pos > 1)
-	{
-		operation_handler(stack, NULL, op);
-		pos--;
-	}
-}
-
-void	to_bottom(t_list **stack, int pos, int len, char s)
-{
-	t_operation	op;
-	if (s == 'a')
-		op = RRA;
-	else
-		op = RRB;
-	while (pos < len && pos != 1)
-	{
-		operation_handler(stack, NULL, op);
-		pos++;
-	}
-}
-
-
 void	push_swap(t_list **a, t_list **b)
 {
 	/*
@@ -43,9 +10,25 @@ void	push_swap(t_list **a, t_list **b)
 	stack_a = *a;
 	stack_b = *b;
 	*/
+
+	t_partition		first_partition; (void)first_partition;
+	t_list			*last;
+
+
 	log_lists(*a, *b);
-	median_of_three(a, ft_lstsize(*a), *(int *)((*a)->content));
-	//bubble_sort(a, b);
+	//median_of_three(a, ft_lstsize(*a), *(int *)((*a)->content));
+
+	first_partition = new_partition(A, 0);
+	first_partition.top = *(int *)((*a)->content);
+	last = ft_lstlast(*a);
+	first_partition.pivot = *(int *)((last)->content);
+	first_partition.size = ft_lstsize(*a);
+	partition(a, b, first_partition);
+	
+
+#ifdef LOG
+#endif
+	ft_printf("\nFINAL: \n");
 	log_lists(*a, *b);
 }
 

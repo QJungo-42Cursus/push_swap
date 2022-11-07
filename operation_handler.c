@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   operation_handler.c                                :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: qjungo <qjungo@student.42lausanne.ch>      +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/13 21:34:32 by qjungo            #+#    #+#             */
-/*   Updated: 2022/11/06 18:27:33 by qjungo           ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include"libft/libft.h"
 #include"push_swap.h"
 
@@ -18,6 +6,12 @@ static void	print_operation(t_operation operation);
 
 void	operation_handler(t_list **stack_a, t_list **stack_b, t_operation operation)
 {
+#ifdef LOG
+	static int	calls = 0;
+
+	calls++;
+	ft_printf("%d\t", calls);
+#endif
 	print_operation(operation);
 	if (operation == SA)
 		swap_top(*stack_a);

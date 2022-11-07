@@ -62,3 +62,23 @@ void	to_other_stack(t_list **a, t_list **b, int val, t_stack s_from)
 		operation_handler(a, b, PA);
 	}
 }
+
+void	greater_to_top(t_list **list, t_stack stack)
+{
+	int		greater;
+	int		current;
+	t_list	*ptr;
+
+	ptr = *list;
+
+	greater = *(int *)ptr->content;
+	while (ptr != NULL)
+	{
+		current = *(int *)ptr->content;
+		if (current > greater)
+			greater = current;
+		ptr = ptr->next;
+	}
+	to_stack_top(list, greater, stack);
+}
+

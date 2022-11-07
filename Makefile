@@ -49,9 +49,10 @@ else
 	#leaks mac
 endif		
 
-qt: all
+qt: re
+	#./push_swap 1 80 5 4 61 -60 10
 	clear
-	./push_swap 1 80 5 4 61 -60 10
+	./push_swap 1 2 3 4 5
 
 test: all
 ifeq ($(shell uname), Linux)

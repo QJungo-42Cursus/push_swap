@@ -11,20 +11,10 @@ void	push_swap(t_list **a, t_list **b)
 	stack_b = *b;
 	*/
 
-	t_partition		first_partition; (void)first_partition;
-	t_list			*last;
-
-
 	log_lists(*a, *b);
 	//median_of_three(a, ft_lstsize(*a), *(int *)((*a)->content));
-
-	first_partition = new_partition(A, 0);
-	first_partition.top = *(int *)((*a)->content);
-	last = ft_lstlast(*a);
-	first_partition.pivot = *(int *)((last)->content);
-	first_partition.size = ft_lstsize(*a);
-	partition(a, b, first_partition);
 	
+	quicksort(a, b);
 
 #ifdef LOG
 #endif

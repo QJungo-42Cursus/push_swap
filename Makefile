@@ -23,6 +23,12 @@ OBJS_TEST =	$(SRCS_TEST:.c=.o)
 
 OBJS =		$(SRCS:.c=.o)
 
+ifeq ($(shell uname), Linux)
+LEAKS =	valgrind -q --leak-check=full --track-origins=yes
+else 
+LEAKS = leaks
+endif		
+
 
 all: $(NAME)
 
@@ -44,17 +50,11 @@ re: fclean all
 
 
 # UNIT TESTS
-main_test: clean_test all
+main_test: clean_test
+	clear
 	@make all -C libft
-	@$(CC) $(CFLAGS) -D MAIN_TEST $(SRCS_TEST) -L./libft -lft -o test.out
-	@echo "Sans arguments"
-	@./test.out
-	@echo "Avec des arguments non-numeriques"
-	@./test.out 3 5 78 "salut" 
-	@echo "Avec deux fois le meme nombre"
-	@./test.out 3 5 78 3
-	@echo "Liste valide"
-	@./test.out 3 5 78
+	@$(CC) $(CFLAGS) -D MAIN_TEST get.c log.c $(SRCS_TEST) -L./libft -lft -o test.out
+	make main_test -C tests
 
 clean_test:
 	$(RM) $(OBJS_TEST) test.out
@@ -62,7 +62,6 @@ clean_test:
 
 
 # TESTS ALL
-LEAKS =	valgrind -q --leak-check=full --track-origins=yes
 #ARGS = 2 1 3 90 "-8" 40 6
 ARGS = 1 2 3 4 6 -80 -90 -81 5 0 -50 -51 10000 500
 

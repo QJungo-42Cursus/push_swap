@@ -49,6 +49,7 @@ void	back_to_parent(t_list **a, t_list **b, t_partition c_partition)
 
 static int	if_opposite(t_list **a, t_list **b, t_partition c_partition)
 {
+	(void)a; (void)b; (void)c_partition;
 	// TODO decaler de 1 et if_side
 	//if_side(a, b, c_partition);
 

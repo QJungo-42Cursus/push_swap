@@ -25,6 +25,7 @@ SRCS_STR =		ft_strmapi.c \
 
 SRCS_NB = 		ft_itoa.c \
 				ft_atoi.c \
+				long_atoi.c \
 				itoa_base.c \
 				utoa.c
 

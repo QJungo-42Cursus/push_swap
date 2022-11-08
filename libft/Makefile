@@ -49,6 +49,7 @@ SRCS_LST = 		ft_lstnew.c \
 SRCS_PRT = 		ft_putchar_fd.c \
 				ft_putendl_fd.c \
 				ft_putstr_fd.c \
+				ft_color.c \
 				ft_putendl_fd.c \
 				ft_putnbr_fd.c \
 				ft_printf/ft_printf.c \

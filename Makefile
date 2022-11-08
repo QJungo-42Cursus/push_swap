@@ -16,7 +16,9 @@ SRCS =		main.c \
 			quicksort/quicksort.c \
 			quicksort/back_to_parent.c
 
-SRC_TEST = main_test.c
+SRC_TEST =	main_test.c \
+			mov_test.c \
+			utils.c 
 
 SRCS_TEST =	$(addprefix tests/,	$(SRC_TEST))
 OBJS_TEST =	$(SRCS_TEST:.c=.o)
@@ -67,6 +69,10 @@ else
 endif		
 
 ###  UNIT TESTS  ###
+# clean
+clean_test: fclean
+	$(RM) $(OBJS_TEST) test.out
+
 # main
 main_test: clean_test
 	clear
@@ -75,9 +81,13 @@ main_test: clean_test
 	make main_test -C tests
 
 # back to parent
-btp_test: clean_test
-clean_test:
-	$(RM) $(OBJS_TEST) test.out
+#btp_test: clean_test
 
 
-
+TESTS = ./test.out
+# mov
+mov_test: clean_test
+	clear
+	@make all -C libft
+	@$(CC) -D MOV_TEST operation_handler.c operations.c mov.c get.c log.c $(SRCS_TEST) -L./libft -lft -o test.out
+	$(TESTS)

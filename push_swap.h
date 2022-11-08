@@ -52,6 +52,7 @@ void		quicksort(t_list **a, t_list **b);
 // get
 t_list		*get_next_(t_list *current, t_list **a, t_list **b, t_stack stack);
 int			top_val(t_list *a, t_list *b, t_stack s);
+int			bottom_val(t_list *list);
 
 // mov
 void		to_stack_top(t_list **stack, int val, t_stack s_from);

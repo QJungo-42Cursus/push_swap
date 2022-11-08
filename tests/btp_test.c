@@ -2,6 +2,7 @@
 # include "../libft/libft.h"
 # include "../push_swap.h"
 # include "../quicksort/quicksort.h"
+# include "tests.h"
 
 ///		back_to_parent(t_list **a, t_list **b, t_partition c_partition)
 ///		_______________________________________________________________
@@ -23,20 +24,6 @@
 ///		_______________________________________________________________
 ///		return: void
 
-static int init_stack(int argc, int *numbers, t_list **stack_a)
-{
-	int		i;
-	t_list	*ptr;
-
-	i = 0;
-	while (i < argc)
-	{
-		ptr = *stack_a;
-		ft_lstadd_back(stack_a, ft_lstnew(&numbers[i]));
-		i++;
-	}
-	return (SUCCESS);
-}
 
 static void	test(int as, int *av, int bs, int *bv, t_partition partition)
 {

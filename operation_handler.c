@@ -51,12 +51,10 @@ static void	op2(t_list **stack_a, t_list **stack_b, t_operation operation)
 
 void	operation_handler(t_list **stack_a, t_list **stack_b, t_operation operation)
 {
-#ifdef LOG
 	static int	calls = 0;
 
 	calls++;
 	ft_printf("%d\t", calls);
-#endif
 	print_operation(operation);
 	if (operation == SA)
 		swap_top(*stack_a);

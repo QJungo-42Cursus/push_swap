@@ -1,32 +1,34 @@
-#include "libft/libft.h"
-#include "push_swap.h"
+#ifdef MAIN_TEST
+#include "../libft/libft.h"
+#include "../push_swap.h"
 
 static void	init_stack_a(int argc, char **argv, t_list **stack_a);
 static int	is_list_correct(int argc, char **argv);
 
 int main(int argc, char **argv)
 {
-	t_list	*stack_a;
-	t_list	*stack_b;
+	t_list	*a;
+	t_list	*b;
 	
 	argc--;
 	argv++;
 	if (argc == 0)
 	{
-		ft_printf("Error\n (not enought argc)");
+		ft_printf("Error\n");
 		return (0);
 	}
 	if (!is_list_correct(argc, argv))
 	{
-		ft_printf("Error\n (args are not integers)");
+		ft_printf("Error\n");
 		return (0);
 	}
-	stack_a = NULL;
-	stack_b = NULL;
-	init_stack_a(argc, argv, &stack_a);
-	push_swap(&stack_a, &stack_b);
-	ft_lstclear(&stack_a, free);
-	ft_lstclear(&stack_b, free);
+	a = NULL;
+	b = NULL;
+	init_stack_a(argc, argv, &a);
+	log_lists(a, b);
+	//push_swap(&a, &b);
+	ft_lstclear(&a, free);
+	ft_lstclear(&b, free);
 }
 
 static void	init_stack_a(int argc, char **argv, t_list **stack_a)
@@ -59,7 +61,7 @@ static int	is_list_correct(int argc, char **argv)
 		while (argv[i][j] != '\0')
 		{
 			if (!ft_isdigit(argv[i][j]))
-				return (0);
+				return (FALSE);
 			j++;
 		}
 		i++;
@@ -69,14 +71,16 @@ static int	is_list_correct(int argc, char **argv)
 	i = 0;
 	while (i < argc)
 	{
-		j = i - j;
+		j = i - 1;
 		nums[i] = ft_atoi(argv[i]);
 		while (j > 0)
 		{
 			if (nums[i] == nums[j])
+				return (FALSE);
 			j--;
 		}
 		i++;
 	}
-	return (1);
+	return (TRUE);
 }
+#endif /* MAIN_TEST */

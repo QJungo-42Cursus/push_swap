@@ -11,24 +11,6 @@ void	repeat_op(t_list **a, t_list **b, int n, t_operation op)
 	}
 }
 
-///	push a value n (distance) time to the top
-void	up(t_list **stack, int distance, t_stack s)
-{
-	if (s == A)
-		repeat_op(stack, NULL, distance, RA);
-	else
-		repeat_op(NULL, stack, distance, RB);
-}
-
-///	push a value n (distance) time to the bottom
-void	down(t_list **stack, int distance, t_stack s)
-{
-	if (s == A)
-		repeat_op(stack, NULL, distance, RRA);
-	else
-		repeat_op(NULL, stack, distance, RRB);
-}
-
 /// push a value to the top of the stack in the quickest direction
 void	to_stack_top(t_list **stack, int val, t_stack s_from)
 {
@@ -43,9 +25,19 @@ void	to_stack_top(t_list **stack, int val, t_stack s_from)
 		ptr = get_next_(ptr, stack, stack, s_from);
 
 	if (distance > lstsize / 2)
-		down(stack, lstsize - distance, s_from);
+	{
+		if (s_from == A)
+			repeat_op(stack, NULL, lstsize - distance, RRA);
+		else
+			repeat_op(NULL, stack, lstsize - distance, RRB);
+	}
 	else
-		up(stack, distance, s_from);
+	{
+		if (s_from == A)
+			repeat_op(stack, NULL, distance, RA);
+		else
+			repeat_op(NULL, stack, distance, RB);
+	}
 }
 
 /// push the value to the top of the other stack by the quickest way

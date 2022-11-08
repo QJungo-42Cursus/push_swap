@@ -15,6 +15,7 @@ void	push_swap(t_list **a, t_list **b)
 	//median_of_three(a, ft_lstsize(*a), *(int *)((*a)->content));
 	
 	quicksort(a, b);
+	//bubble_sort(a, b);
 
 #ifdef LOG
 #endif

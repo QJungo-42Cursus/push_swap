@@ -1,5 +1,6 @@
-#include "libft/libft.h"
-#include "push_swap.h"
+#include "../libft/libft.h"
+#include "../push_swap.h"
+#include "quicksort.h"
 
 
 /// push tout ceux en dessous (jusquau pivot) qui sont superieux dans
@@ -38,78 +39,6 @@ static void	loop(t_list **a, t_list **b, t_list *stack, t_partition *c_partition
 			stack = get_next_(stack, a, b, c_partition->stack); 
 		}
 	}
-}
-
-///	renvoie un noeud du bon cote de son parent
-// on bouge le pivot ?? sur ??
-static void	back_to_parent(t_list **a, t_list **b, t_partition c_partition)
-{
-	t_list	*ptr;
-	t_bool	is_child_greater;
-	int		up;
-	int		down;
-
-	is_child_greater = c_partition.parent_pivot < c_partition.pivot;
-
-	// S'il sont deja a cote...
-	ptr = *b;
-	while (1)
-	{
-		up = *(int *)ptr->content;
-		ptr = get_next_(ptr, NULL, b, B);
-		down = *(int *)ptr->content;
-		if (up == c_partition.parent_pivot && down == c_partition.pivot)
-		{
-			if (!is_child_greater)
-			{
-				to_stack_top(b, up, B);
-				operation_handler(a, b, SB);
-			}
-			log_lists(*a, *b);
-			return ;
-		}
-		if (up == c_partition.pivot && down == c_partition.parent_pivot)
-		{
-			if (is_child_greater)
-			{
-				to_stack_top(b, up, B);
-				operation_handler(a, b, SB);
-			}
-			log_lists(*a, *b);
-			return ;
-		}
-		// si y'a l'un des deux mais pas l'autre, on continue
-		if (up == c_partition.parent_pivot || up == c_partition.pivot)
-			break;
-	}
-
-	// si c'est deja chez b, on le met au top de a 
-	if (c_partition.stack == B)	
-	{
-		ft_printf("to other stack\n");
-		to_other_stack(a, b, c_partition.pivot, B);
-	}
-
-	// rotate b pour etre au bon endroit quand ca va arriver
-	to_stack_top(b, c_partition.parent_pivot, B);
-	ft_printf("parent to stack top -> ");
-	log_lists(*a, *b);
-	// si l'enfant est est plus grand, on met le parent en dessous
-	if (!is_child_greater)
-	{
-		operation_handler(a, b, RB);	
-		ft_printf("invert if child is greater -> ");
-		log_lists(*a, *b);
-	}
-
-	// on insert l'enfant
-	to_other_stack(a, b, c_partition.pivot, A);
-	ft_printf("child to good stack -> ");
-	log_lists(*a, *b);
-
-	greater_to_top(b, B);
-	ft_printf("greater_to_top -> ");
-	log_lists(*a, *b);
 }
 
 /// depuis l'index de debut et de fin de la partition
@@ -167,25 +96,4 @@ void	partition(t_list **a, t_list **b, t_partition c_partition)
 		ft_printf("less) on le fous derriere sont parrent : %d (->%d)\n", less.pivot, less.parent_pivot);
 		back_to_parent(a, b, less);
 	}
-}
-
-void	quicksort(t_list **a, t_list **b)
-{
-	t_partition		first_partition;
-	t_list			*last;
-
-	first_partition = new_partition(A, 0);
-	first_partition.top = *(int *)((*a)->content);
-	last = ft_lstlast(*a);
-	first_partition.pivot = *(int *)((last)->content);
-	first_partition.size = ft_lstsize(*a);
-	first_partition.is_first = TRUE;
-	partition(a, b, first_partition);
-	log_lists(*a, *b);
-
-
-	// TODO mettre le + grand en haut !!!
-
-	greater_to_top(b, B);
-	repeat_op(a, b, first_partition.size, PA);
 }

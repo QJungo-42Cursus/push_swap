@@ -1,4 +1,4 @@
-//#ifdef MAIN_TEST
+#ifdef MAIN_TEST
 # include "../libft/libft.h"
 # include "../push_swap.h"
 
@@ -91,4 +91,4 @@ static int init_stack_a(int argc, char **argv, t_list **stack_a)
 	return (SUCCESS);
 }
 
-//#endif /* MAIN_TEST */
+#endif /* MAIN_TEST */

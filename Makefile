@@ -49,38 +49,35 @@ re: fclean all
 .PHONY: all clean fclean re
 
 
-# UNIT TESTS
+###  TESTS ALL  ###
+ARGS = 1 2 3 4 6 -80 -90 -81 5 0 -50 -51 10000 500
+
+leaks: all
+	$(LEAKS) ./push_swap $(ARGS)
+
+qt: re
+	clear
+	./push_swap 1 80 5 4 61 -60 10
+
+ft: all
+ifeq ($(shell uname), Linux)
+	./push_swap $(ARGS) | ./checker_linux $(ARGS)
+else 
+	 #./push_swap $(ARGS) | ./checker_XXX $(ARGS)
+endif		
+
+###  UNIT TESTS  ###
+# main
 main_test: clean_test
 	clear
 	@make all -C libft
 	@$(CC) $(CFLAGS) -D MAIN_TEST get.c log.c $(SRCS_TEST) -L./libft -lft -o test.out
 	make main_test -C tests
 
+# back to parent
+btp_test: clean_test
 clean_test:
 	$(RM) $(OBJS_TEST) test.out
 
 
 
-# TESTS ALL
-#ARGS = 2 1 3 90 "-8" 40 6
-ARGS = 1 2 3 4 6 -80 -90 -81 5 0 -50 -51 10000 500
-
-leaks: all
-ifeq ($(shell uname), Linux)
-	$(LEAKS) ./push_swap $(ARGS)
-else 
-	#leaks mac
-endif		
-
-qt: re
-	clear
-	#./push_swap 1 2 3 4 5
-	./push_swap 1 80 5 4 61 -60 10
-
-test: all
-ifeq ($(shell uname), Linux)
-	#$(LEAKS) ./push_swap 
-	./push_swap $(ARGS) | ./checker_linux $(ARGS)
-else 
-	 #./push_swap $(ARGS) | ./checker_XXX $(ARGS)
-endif		

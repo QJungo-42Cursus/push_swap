@@ -13,7 +13,9 @@ int		top_val(t_list *a, t_list *b, t_stack s)
 ///		Return la valeur en bas d'une stack
 int		bottom_val(t_list *list)
 {
-	while (list != NULL)
+	if (list == NULL)
+		return (0);
+	while (list->next != NULL)
 		list = list->next;
 	return (*(int *)list->content);
 }

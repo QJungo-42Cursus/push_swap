@@ -30,8 +30,7 @@ void	ok()
 void	ko()
 {
 	ft_color(RED, BOLD);
-	ft_printf("KO.\n");
-	ft_color(RESET, 0);
+	ft_printf("KO. ");
 }
 
 void	title(t_color color, char *title)

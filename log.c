@@ -18,13 +18,21 @@ void	log_lists(t_list *a, t_list *b)
 	print_stack_el(NULL);
 	if (ft_lstsize(a) > 0)
 	{
-		ft_printf("\n----- A -----\n");
+		ft_printf("\n-----");
+		ft_color(YELLOW, 0);
+		ft_printf("A");
+		ft_color(RESET, 0);
+		ft_printf("-----\n");
 		ft_lstiter(a, print_stack_el);
 		ft_printf("-----");
 	}
 	if (ft_lstsize(b) > 0)
 	{
-		ft_printf("\n----- B -----\n");
+		ft_printf("\n-----");
+		ft_color(PURPLE, 0);
+		ft_printf("B");
+		ft_color(RESET, 0);
+		ft_printf("-----\n");
 		ft_lstiter(b, print_stack_el);
 		ft_printf("-----");
 	}

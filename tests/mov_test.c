@@ -1,3 +1,5 @@
+#ifdef MOV_TEST
+
 # include "../libft/libft.h"
 # include "../push_swap.h"
 # include "../quicksort/quicksort.h"
@@ -7,7 +9,7 @@
 
 ///		greater_to_top(t_list **list, t_stack stack)
 ///		-> la plus haute valeur en haut
-static void	greater_to_top_test(int as, int *av, t_stack stack)
+static void	greater_to_top_test(int as, int *av)
 {
 	t_list	*a;
 	
@@ -100,24 +102,26 @@ int main()
 	to_stack_top_test(5, a, 4, b, -5, B);
 
 	title(BLUE, "TO OTHER STACK (TOP)");
-	to_stack_top_test(5, a, 4, b, 1, A);
-	to_stack_top_test(5, a, 4, b, 3, A);
-	to_stack_top_test(5, a, 4, b, 4, A);
-	to_stack_top_test(5, a, 4, b, 200, A);
-	to_stack_top_test(5, a, 4, b, 500, A);
-	to_stack_top_test(5, a, 4, b, 100, B);
-	to_stack_top_test(5, a, 4, b, 98, B);
-	to_stack_top_test(5, a, 4, b, 85, B);
-	to_stack_top_test(5, a, 4, b, -5, B);
+	to_other_stack_test(5, a, 4, b, 1, A);
+	to_other_stack_test(5, a, 4, b, 3, A);
+	to_other_stack_test(5, a, 4, b, 4, A);
+	to_other_stack_test(5, a, 4, b, 200, A);
+	to_other_stack_test(5, a, 4, b, 500, A);
+	to_other_stack_test(5, a, 4, b, 100, B);
+	to_other_stack_test(5, a, 4, b, 98, B);
+	to_other_stack_test(5, a, 4, b, 85, B);
+	to_other_stack_test(5, a, 4, b, -5, B);
 
 	title(BLUE, "GREATER TO TOP 1");
-	greater_to_top_test(5, a, A);
+	greater_to_top_test(5, a);
 	title(BLUE, "GREATER TO TOP 2");
-	greater_to_top_test(4, b, A);
+	greater_to_top_test(4, b);
 	int	c[15] = {1, 3, 4, 200, 500, 10000, -500, 9, 8, 555, 7, 50, 89, 999, 5};
 	int	d[20] = {98, 100, 85, -5, 500, 501, 502, -55, -555, -5555, 666, 667, 48546, 741, 9879, 5556, -1, -2, -3, -7};
 	title(BLUE, "GREATER TO TOP 3");
-	greater_to_top_test(15, c, A);
+	greater_to_top_test(15, c);
 	title(BLUE, "GREATER TO TOP 4");
-	greater_to_top_test(20, d, A);
+	greater_to_top_test(20, d);
 }
+
+#endif /* MOV_TEST */

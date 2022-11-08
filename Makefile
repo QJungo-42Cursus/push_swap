@@ -3,8 +3,7 @@ NAME =		push_swap
 CC =		gcc
 CFLAGS =	-Wall -Wextra -Werror
 RM =		rm -f
-SRCS =		main.c \
-			push_swap.c \
+S =			push_swap.c \
 			operations.c \
 			operation_handler.c \
 			log.c \
@@ -12,12 +11,16 @@ SRCS =		main.c \
 			mov.c \
 			get.c \
 			bubble_sort.c \
-			quicksort/partition.c \
 			quicksort/quicksort.c \
+			quicksort/partition.c \
+			quicksort/loop.c \
 			quicksort/back_to_parent.c
+
+SRCS =		main.c $(S)
 
 SRC_TEST =	main_test.c \
 			mov_test.c \
+			btp_test.c \
 			utils.c 
 
 SRCS_TEST =	$(addprefix tests/,	$(SRC_TEST))
@@ -52,14 +55,14 @@ re: fclean all
 
 
 ###  TESTS ALL  ###
-ARGS = 1 2 3 4 6 -80 -90 -81 5 0 -50 -51 10000 500
+ARGS = 1 2 655 0 -80 700 701
 
 leaks: all
 	$(LEAKS) ./push_swap $(ARGS)
 
 qt: re
 	clear
-	./push_swap 1 80 5 4 61 -60 10
+	./push_swap $(ARGS)
 
 ft: all
 ifeq ($(shell uname), Linux)
@@ -69,24 +72,28 @@ else
 endif		
 
 ###  UNIT TESTS  ###
+TESTS = ./test.out
+
 # clean
-clean_test: fclean
+tclean: fclean
 	$(RM) $(OBJS_TEST) test.out
 
 # main
-main_test: clean_test
+main_test: tclean 
 	clear
 	@make all -C libft
 	@$(CC) $(CFLAGS) -D MAIN_TEST get.c log.c $(SRCS_TEST) -L./libft -lft -o test.out
 	make main_test -C tests
 
 # back to parent
-#btp_test: clean_test
+btp_test: tclean fclean
+	@$(CC) $(CFLAGS) -D BTP_TEST $(S) $(SRCS_TEST) -L./libft -lft -o test.out
+	@clear
+	$(TESTS)
 
 
-TESTS = ./test.out
 # mov
-mov_test: clean_test
+mov_test: tclean
 	clear
 	@make all -C libft
 	@$(CC) -D MOV_TEST operation_handler.c operations.c mov.c get.c log.c $(SRCS_TEST) -L./libft -lft -o test.out

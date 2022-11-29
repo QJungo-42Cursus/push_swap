@@ -1,6 +1,8 @@
 #include "../libft/libft.h"
 #include "../push_swap.h"
 
+// Trouve un chiffre qui n'est pas dans la stack de depart pour l'utiliser
+// comme premier parent (qui n'existe donc pas)
 static int	find_unused(t_list **a)
 {
 	t_list	*ptr;

@@ -51,12 +51,12 @@ static void	rotate_handler(t_list **stack_a, t_list **stack_b, t_operation op)
 
 void	operation_handler(t_list **stack_a, t_list **stack_b, t_operation op)
 {
-	static int	calls = 0;
-	calls++;
-	ft_color(BLUE, 0);
-	ft_printf("\t%d-", calls);
+	//static int	calls = 0;
+	//calls++;
+	//ft_color(BLUE, 0);
+	//ft_printf("\t%d-", calls);
 	print_op(op);
-	ft_color(RESET, 0);
+	//ft_color(RESET, 0);
 
 	if (op == SA)
 		swap_top(*stack_a);

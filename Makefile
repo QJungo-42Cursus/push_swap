@@ -2,6 +2,7 @@ NAME =		push_swap
 CC =		gcc
 CFLAGS =	-Wall -Wextra -Werror
 RM =		rm -f
+
 S =			push_swap.c \
 			operations.c \
 			operation_handler.c \
@@ -9,7 +10,6 @@ S =			push_swap.c \
 			new.c \
 			mov.c \
 			get.c \
-			bubble_sort.c \
 			quicksort/quicksort.c \
 			quicksort/partition.c \
 			quicksort/loop.c \
@@ -30,7 +30,7 @@ OBJS =		$(SRCS:.c=.o)
 ifeq ($(shell uname), Linux)
 LEAKS =	valgrind -q --leak-check=full --track-origins=yes
 else 
-LEAKS = leaks
+LEAKS = leaks -atExit -- 
 endif		
 
 all: $(NAME)
@@ -81,6 +81,12 @@ TESTS = ./test.out
 tclean: fclean
 	$(RM) $(OBJS_TEST) test.out
 
+t:
+	clear
+	@make all -C libft
+	@$(CC) $(CFLAGS) radix_sort/radix_sort.c -L./libft -lft -o test.out
+	./test.out
+
 # main
 main_test: tclean 
 	clear
@@ -93,7 +99,6 @@ btp_test: tclean fclean
 	@$(CC) $(CFLAGS) -D BTP_TEST $(S) $(SRCS_TEST) -L./libft -lft -o test.out
 	@clear
 	$(TESTS)
-
 
 # mov
 mov_test: tclean

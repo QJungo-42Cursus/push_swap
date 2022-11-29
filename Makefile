@@ -84,7 +84,7 @@ tclean: fclean
 t:
 	clear
 	@make all -C libft
-	@$(CC) $(CFLAGS) radix_sort/radix_sort.c -L./libft -lft -o test.out
+	@$(CC) $(CFLAGS) get.c log.c tests/utils.c radix_sort/radix_sort.c -L./libft -lft -o test.out
 	./test.out
 
 # main

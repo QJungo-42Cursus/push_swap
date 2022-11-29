@@ -105,7 +105,7 @@ int main()
 	test(5, a, 4, b, p);
 
 	p.stack = B;
-	title(BLUE, "TEST 6\n");
+	title(BLUE, "TEST 6\n"); // TODO 
 	p.pivot = 98;
 	test(5, a, 4, b, p);
 

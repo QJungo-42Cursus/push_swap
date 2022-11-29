@@ -1,7 +1,7 @@
 # include "libft/libft.h"
 # include "push_swap.h"
 
-static int	init_stack_a(int argc, char **argv, t_list **stack_a);
+static int	init_stack(int argc, char **argv, t_list **stack);
 static int	test_list(int argc, char **argv);
 
 int main(int argc, char **argv)
@@ -13,12 +13,12 @@ int main(int argc, char **argv)
 	argv++;
 	a = NULL;
 	b = NULL;
-	if (argc == 0 || test_list(argc, argv) || init_stack_a(argc, argv, &a))
+	if (argc == 0 || test_list(argc, argv) || init_stack(argc, argv, &a))
 	{
 		ft_printf("Error\n");
 		return (0);
 	}
-	log_lists(a, b);
+	log_lists(a, b); //
 	push_swap(&a, &b);
 	ft_lstclear(&a, free);
 	ft_lstclear(&b, free);
@@ -60,7 +60,7 @@ static int	test_list(int argc, char **argv)
 	return (SUCCESS);
 }
 
-static int init_stack_a(int argc, char **argv, t_list **stack_a)
+static int init_stack(int argc, char **argv, t_list **stack)
 {
 	int		i;
 	int		*numbers;
@@ -71,18 +71,18 @@ static int init_stack_a(int argc, char **argv, t_list **stack_a)
 	{
 		numbers = malloc(sizeof(int));
 		*numbers = ft_atoi(argv[i]);
-		ptr = *stack_a;
+		ptr = *stack;
 		while (ptr != NULL)
 		{
 			if (*(int *)ptr->content == *numbers)
 			{
-				ft_lstclear(stack_a, free);
+				ft_lstclear(stack, free);
 				free(numbers);
 				return (ERROR);
 			}
 			ptr = ptr->next;
 		}
-		ft_lstadd_back(stack_a, ft_lstnew(numbers));
+		ft_lstadd_back(stack, ft_lstnew(numbers));
 		i++;
 	}
 	return (SUCCESS);

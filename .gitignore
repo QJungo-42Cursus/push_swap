@@ -1,3 +1,4 @@
 *.o
 */*.o
 push_swap
+libft

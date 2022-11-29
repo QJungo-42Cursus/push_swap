@@ -1,5 +1,4 @@
 NAME =		push_swap
-
 CC =		gcc
 CFLAGS =	-Wall -Wextra -Werror
 RM =		rm -f
@@ -34,8 +33,12 @@ else
 LEAKS = leaks
 endif		
 
-
 all: $(NAME)
+
+u_libft:
+	rm -rf ./libft
+	cp -r ../libft .
+	rm -rf ./libft/.git
 
 $(NAME): $(OBJS)
 	@make all -C libft

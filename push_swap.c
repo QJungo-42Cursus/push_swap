@@ -1,4 +1,5 @@
 #include"libft/libft.h"
+#include"radix_sort/radix_sort.h"
 #include"push_swap.h"
 
 void	push_swap(t_list **a, t_list **b)
@@ -6,7 +7,13 @@ void	push_swap(t_list **a, t_list **b)
 	//log_lists(*a, *b);
 	//median_of_three(a, ft_lstsize(*a), *(int *)((*a)->content));
 	
-	quicksort(a, b);
+	au lieu de faire un truc qui sort en live, indexer chaque node avec
+		- sa position actuelle
+		- sa position voulue (dans l'ordre)
+	donc le tri se ferai avant en vrai et c'est plutot un algo de deplacement 
+	qui est a implementer !!!
+	//quicksort(a, b);
+	//radix_sort(a, b);
 	//ft_printf("\nFINAL: \n");
 	//log_lists(*a, *b);
 }

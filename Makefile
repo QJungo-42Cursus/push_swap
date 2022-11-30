@@ -13,7 +13,9 @@ S =			push_swap.c \
 			quicksort/quicksort.c \
 			quicksort/partition.c \
 			quicksort/loop.c \
-			quicksort/back_to_parent.c
+			quicksort/back_to_parent.c \
+			radix_sort/radix_sort.c \
+			radix_sort/most_significant_digit.c
 
 SRCS =		main.c $(S)
 
@@ -81,7 +83,10 @@ TESTS = ./test.out
 tclean: fclean
 	$(RM) $(OBJS_TEST) test.out
 
-t:
+t: all
+	./push_swap $(ARGS)
+
+tt:
 	clear
 	@make all -C libft
 	@$(CC) $(CFLAGS) get.c log.c tests/utils.c radix_sort/radix_sort.c -L./libft -lft -o test.out

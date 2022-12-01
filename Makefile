@@ -11,6 +11,10 @@ S =			push_swap.c \
 			op/mov.c \
 			op/get.c \
 			tests/log.c \
+			quicksort/quicksort.c \
+			quicksort/partition.c \
+			quicksort/back_to_parent.c \
+			quicksort/loop.c 
 
 SRCS =		main.c $(S)
 
@@ -55,54 +59,20 @@ re: fclean all
 
 
 ###  TESTS ALL  ###
-ARGS = 1 2 655 0 -80 700 701
-
-leaks: all
-	$(LEAKS) ./push_swap $(ARGS)
-
-qt: re
-	clear
-	./push_swap $(ARGS)
-
-ft: all
-ifeq ($(shell uname), Linux)
-	./push_swap $(ARGS) | ./checker_linux $(ARGS)
-else 
-	 #./push_swap $(ARGS) | ./checker_XXX $(ARGS)
-endif		
-
-###  UNIT TESTS  ###
 TESTS = ./test.out
+ARGS = 1 2 655 0 -80 700 701
+#ARGS = 1 2 655 0 -80 700 701
+
 
 # clean
 tclean: fclean
-	$(RM) $(OBJS_TEST) test.out
+	$(RM) $(OBJS_TEST) $(TESTS)
 
 t: all
 	./push_swap $(ARGS)
+	./push_swap $(ARGS2)
 
-tt:
-	clear
-	@make all -C libft
-	@$(CC) $(CFLAGS) get.c log.c tests/utils.c radix_sort/radix_sort.c -L./libft -lft -o test.out
-	./test.out
+ARGS2 = 1 2 655 0 -80 700 701 -59 -95 -34
+check: all
+	./push_swap $(ARGS2) | ./checker_linux $(ARGS2)
 
-# main
-main_test: tclean 
-	clear
-	@make all -C libft
-	@$(CC) $(CFLAGS) -D MAIN_TEST get.c log.c $(SRCS_TEST) -L./libft -lft -o test.out
-	make main_test -C tests
-
-# back to parent
-btp_test: tclean fclean
-	@$(CC) $(CFLAGS) -D BTP_TEST $(S) $(SRCS_TEST) -L./libft -lft -o test.out
-	@clear
-	$(TESTS)
-
-# mov
-mov_test: tclean
-	clear
-	@make all -C libft
-	@$(CC) -D MOV_TEST operation_handler.c operations.c mov.c get.c log.c $(SRCS_TEST) -L./libft -lft -o test.out
-	$(TESTS)

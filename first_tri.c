@@ -6,7 +6,7 @@
 /*   By: qjungo <qjungo@student.42lausanne.ch>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 09:30:35 by qjungo            #+#    #+#             */
-/*   Updated: 2022/12/01 09:32:47 by qjungo           ###   ########.fr       */
+/*   Updated: 2022/12/01 11:22:40 by qjungo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ static void	change_value(t_list *a, int value, int new_value)
 	}
 }
 
-static void	shift_to_zero(t_list *a, int padding)
+static void	shift_all_value_in_list(t_list *a, int padding)
 {
 	int		*content;
 
@@ -53,6 +53,7 @@ static void	shift_to_zero(t_list *a, int padding)
 	{
 		content = (int *)a->content;
 		*content -= padding;
+		*content += FIRST_VALUE;
 		a = a->next;
 	}
 }
@@ -82,5 +83,5 @@ static void	tri(t_list *a, int littlest, int current, t_bool is_first)
 void	first_tri(t_list *a)
 {
 	tri(a, 0, 0, TRUE);
-	shift_to_zero(a, get_littlest(a, INT_MIN));
+	shift_all_value_in_list(a, get_littlest(a, INT_MIN));
 }

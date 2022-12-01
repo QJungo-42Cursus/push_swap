@@ -18,7 +18,6 @@ int main(int argc, char **argv)
 		ft_printf("Error\n");
 		return (0);
 	}
-	//log_lists(a, b); //
 	push_swap(&a, &b);
 	ft_lstclear(&a, free);
 	ft_lstclear(&b, free);

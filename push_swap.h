@@ -61,6 +61,8 @@ t_list		*init_partitions(t_list **list, t_partition c_partition, t_partition *gr
 
 
 
+#define FIRST_VALUE 1 // la valeur de depart de la liste (varie entre 0 et 1)
+void	quicksort(t_list **a, t_list **b);
 
 void	first_tri(t_list *a);
 

@@ -1,5 +1,5 @@
-#include"libft/libft.h"
-#include"push_swap.h"
+#include "../libft/libft.h"
+#include "../push_swap.h"
 
 ///		Return la valeur en haut d'une stack
 int		top_val(t_list *a, t_list *b, t_stack s)

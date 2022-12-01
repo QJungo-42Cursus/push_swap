@@ -4,18 +4,13 @@ CFLAGS =	-Wall -Wextra -Werror
 RM =		rm -f
 
 S =			push_swap.c \
-			operations.c \
-			operation_handler.c \
-			log.c \
-			new.c \
-			mov.c \
-			get.c \
-			quicksort/quicksort.c \
-			quicksort/partition.c \
-			quicksort/loop.c \
-			quicksort/back_to_parent.c \
-			radix_sort/radix_sort.c \
-			radix_sort/most_significant_digit.c
+			first_tri.c \
+			op/operations.c \
+			op/operation_handler.c \
+			op/new.c \
+			op/mov.c \
+			op/get.c \
+			tests/log.c \
 
 SRCS =		main.c $(S)
 

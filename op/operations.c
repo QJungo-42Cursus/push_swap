@@ -1,4 +1,4 @@
-#include"libft/libft.h"
+#include "../libft/libft.h"
 
 ///	swap a/b - swap the to element at the top
 void	swap_top(t_list *stack) // SA & SB

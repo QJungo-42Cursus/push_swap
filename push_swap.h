@@ -44,11 +44,6 @@ void		r_rotate(t_list **stack);
 void		log_lists(t_list *a, t_list *b);
 void		log_partition(t_list **a, t_list **b, t_partition c_partition, char *msg, int from_pivot);
 
-// algos
-void		bubble_sort(t_list **stack_a, t_list **stack_b);
-void		partition(t_list **a, t_list **b, t_partition partition);
-void		quicksort(t_list **a, t_list **b);
-
 // get
 t_list		*get_next_(t_list *current, t_list **a, t_list **b, t_stack stack);
 int			top_val(t_list *a, t_list *b, t_stack s);
@@ -63,5 +58,10 @@ void		repeat_op(t_list **a, t_list **b, int n, t_operation op);
 // new
 t_partition	new_partition(t_stack stack, int parent_pivot);
 t_list		*init_partitions(t_list **list, t_partition c_partition, t_partition *great, t_partition *less);
+
+
+
+
+void	first_tri(t_list *a);
 
 #endif /* PUSH_SWAP_H */

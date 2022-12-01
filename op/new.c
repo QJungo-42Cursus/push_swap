@@ -1,5 +1,5 @@
-#include"libft/libft.h"
-#include"push_swap.h"
+#include "../libft/libft.h"
+#include "../push_swap.h"
 
 t_partition	new_partition(t_stack stack, int parent_pivot)
 {

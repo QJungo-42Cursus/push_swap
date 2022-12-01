@@ -1,5 +1,5 @@
-#include "libft/libft.h"
-#include "push_swap.h"
+#include "../libft/libft.h"
+#include "../push_swap.h"
 
 /// repeat an operation n time
 void	repeat_op(t_list **a, t_list **b, int n, t_operation op)

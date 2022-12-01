@@ -1,5 +1,5 @@
-#include"libft/libft.h"
-#include"push_swap.h"
+#include "../libft/libft.h"
+#include "../push_swap.h"
 
 static void	print_op(t_operation op)
 {

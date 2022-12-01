@@ -10,11 +10,9 @@ S =			push_swap.c \
 			op/new.c \
 			op/mov.c \
 			op/get.c \
+			sorting_algos/bubble_sort.c \
+			sorting_algos/stupid_sort.c \
 			tests/log.c \
-			quicksort/quicksort.c \
-			quicksort/partition.c \
-			quicksort/back_to_parent.c \
-			quicksort/loop.c 
 
 SRCS =		main.c $(S)
 

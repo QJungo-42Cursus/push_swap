@@ -63,7 +63,10 @@ t_list		*init_partitions(t_list **list, t_partition c_partition, t_partition *gr
 
 #define FIRST_VALUE 1 // la valeur de depart de la liste (varie entre 0 et 1)
 void	quicksort(t_list **a, t_list **b);
+void	bubble_sort(t_list **stack_a, t_list **stack_b);
+void	stupid_sort_in_my_opinion(t_list **a, t_list **b);
 
 void	first_tri(t_list *a);
+int	get_littlest(t_list *a, int treshold);
 
 #endif /* PUSH_SWAP_H */

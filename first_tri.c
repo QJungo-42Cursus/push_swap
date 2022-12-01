@@ -6,14 +6,14 @@
 /*   By: qjungo <qjungo@student.42lausanne.ch>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 09:30:35 by qjungo            #+#    #+#             */
-/*   Updated: 2022/12/01 11:22:40 by qjungo           ###   ########.fr       */
+/*   Updated: 2022/12/01 14:45:58 by qjungo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft/libft.h"
 #include "push_swap.h"
 
-static int	get_littlest(t_list *a, int treshold)
+int	get_littlest(t_list *a, int treshold)
 {
 	int		littlest;
 	int		*content;

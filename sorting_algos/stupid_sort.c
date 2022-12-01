@@ -1,6 +1,17 @@
-#include "push_swap.h"
-#include "libft/libft.h"
-#include "tests/tests.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   stupid_sort.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: qjungo <qjungo@student.42lausanne.ch>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/12/01 15:51:19 by qjungo            #+#    #+#             */
+/*   Updated: 2022/12/01 15:51:20 by qjungo           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "../push_swap.h"
+#include "../libft/libft.h"
 
 static void	send_lesser_greater(t_list **a, t_list **b, int pivot, t_stack current_stack, t_bool lesser)
 {

@@ -1,8 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   mov.c                                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: qjungo <qjungo@student.42lausanne.ch>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/12/01 15:52:19 by qjungo            #+#    #+#             */
+/*   Updated: 2022/12/01 15:58:19 by qjungo           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../libft/libft.h"
 #include "../push_swap.h"
 
 /// repeat an operation n time
-void	repeat_op(t_list **a, t_list **b, int n, t_operation op)
+static void	repeat_op(t_list **a, t_list **b, int n, t_operation op)
 {
 	while (n > 0)
 	{
@@ -12,7 +24,7 @@ void	repeat_op(t_list **a, t_list **b, int n, t_operation op)
 }
 
 /// push a value to the top of the stack in the quickest direction
-void	to_stack_top(t_list **stack, int val, t_stack s_from)
+static void	to_stack_top(t_list **stack, int val, t_stack s_from)
 {
 	int			distance;
 	t_list		*ptr;
@@ -54,23 +66,3 @@ void	to_other_stack(t_list **a, t_list **b, int val, t_stack s_from)
 		operation_handler(a, b, PA);
 	}
 }
-
-void	greater_to_top(t_list **list, t_stack stack)
-{
-	int		greater;
-	int		current;
-	t_list	*ptr;
-
-	ptr = *list;
-
-	greater = *(int *)ptr->content;
-	while (ptr != NULL)
-	{
-		current = *(int *)ptr->content;
-		if (current > greater)
-			greater = current;
-		ptr = ptr->next;
-	}
-	to_stack_top(list, greater, stack);
-}
-

@@ -8,12 +8,12 @@ SRCS =		main.c \
 			first_tri.c \
 			op/operations.c \
 			op/operation_handler.c \
-			op/new.c \
 			op/mov.c \
 			op/get.c \
 			sorting_algos/bubble_sort.c \
 			sorting_algos/stupid_sort.c \
-			tests/log.c \
+			sorting_algos/less_than_six_sort.c \
+			sorting_algos/three_sort.c \
 
 OBJS =		$(SRCS:.c=.o)
 
@@ -58,3 +58,9 @@ t: all
 check: all
 	./push_swap $(ARGS2) | ./checker_linux $(ARGS2)
 
+leaks: all
+	$(LEAKS) ./push_swap $(ARGS2)
+
+san: all
+	$(CC) $(CFLAGS) -fsanitize=address $(SRCS) -L./libft -lft -o $(NAME) 
+	./push_swap $(ARGS2)

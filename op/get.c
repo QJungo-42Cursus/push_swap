@@ -1,30 +1,23 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get.c                                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: qjungo <qjungo@student.42lausanne.ch>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/12/01 15:51:12 by qjungo            #+#    #+#             */
+/*   Updated: 2022/12/01 15:56:03 by qjungo           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../libft/libft.h"
 #include "../push_swap.h"
 
-///		Return la valeur en haut d'une stack
-int		top_val(t_list *a, t_list *b, t_stack s)
-{
-	if (s == A)
-		return (*(int *)a->content);
-	else
-		return (*(int *)b->content);
-}
-
-///		Return la valeur en bas d'une stack
-int		bottom_val(t_list *list)
-{
-	if (list == NULL)
-		return (0);
-	while (list->next != NULL)
-		list = list->next;
-	return (*(int *)list->content);
-}
-
 ///		Renvoie le prochain element de la list.
 ///		Si le next est NULL, renvoie le premier element de la list
+// TODO libft
 static t_list	*get_next_node(t_list *current, t_list **list)
 {
-// TODO libft
 	if (current->next != NULL)
 		return (current->next);
 	return (*list);

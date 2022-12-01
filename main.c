@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: qjungo <qjungo@student.42lausanne.ch>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/12/01 15:51:57 by qjungo            #+#    #+#             */
+/*   Updated: 2022/12/01 15:55:17 by qjungo           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 # include "libft/libft.h"
 # include "push_swap.h"
 
@@ -13,38 +25,32 @@ int main(int argc, char **argv)
 	argv++;
 	a = NULL;
 	b = NULL;
-	if (argc == 0 || test_list(argc, argv) || init_stack(argc, argv, &a))
+	if (argc == 0)
+		return (0);
+	if (test_list(argc, argv) || init_stack(argc, argv, &a))
 	{
 		ft_printf("Error\n");
-		return (0);
+		return (1);
 	}
 	push_swap(&a, &b);
 	ft_lstclear(&a, free);
 	ft_lstclear(&b, free);
 }
 
-static int	is_long(char *str)
-{
-	long	num;
-
-	num = long_atoi(str);
-	if (num < INT_MIN)
-		return (TRUE);
-	if (num > INT_MAX)
-		return (TRUE);
-	return (FALSE);
-}
-
 static int	test_list(int argc, char **argv)
 {
 	int		i;
 	int		j;
+	long	num;
 
 	i = 0;
 	while (i < argc)
 	{
 		j = 0;
-		if (is_long(argv[i]))
+		num = long_atoi(argv[i]);
+		if (num < INT_MIN)
+			return (ERROR);
+		if (num > INT_MAX)
 			return (ERROR);
 		if (argv[i][0] == '-')
 			j++;

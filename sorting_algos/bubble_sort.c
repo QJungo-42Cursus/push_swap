@@ -1,10 +1,22 @@
-#include "libft/libft.h"
-#include "push_swap.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   bubble_sort.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: qjungo <qjungo@student.42lausanne.ch>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/12/01 15:51:31 by qjungo            #+#    #+#             */
+/*   Updated: 2022/12/01 15:51:34 by qjungo           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-void	bubble_sort(t_list **stack_a, t_list **stack_b)
+#include "../libft/libft.h"
+#include "../push_swap.h"
+
 ///	1er algo pas tres malin :
 ///		il va prendre le plus petit et le mettre dans la stack b, 
 ///		rotate et ainsi de suite...
+void	bubble_sort(t_list **stack_a, t_list **stack_b)
 {
 	int		current_value;
 

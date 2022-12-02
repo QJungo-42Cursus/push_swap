@@ -49,14 +49,14 @@ re: fclean all
 
 ###  TESTS ALL  ###
 ARGS = 1 2 655 0 -80 700 701
-ARGS2 = 1 2 655 0 -80 700 701 -59 -95 -34
+ARGS2 = 1 2 655 0 -80 700 701 -59 -95 -34 488 489 5000 -121 -199 -284739 -39 324
 
 t: all
 	./push_swap $(ARGS)
 	./push_swap $(ARGS2)
 
 check: all
-	./push_swap $(ARGS2) | ./checker_linux $(ARGS2)
+	./push_swap $(ARGS2) | ./checker_Mac $(ARGS2)
 
 leaks: all
 	$(LEAKS) ./push_swap $(ARGS2)

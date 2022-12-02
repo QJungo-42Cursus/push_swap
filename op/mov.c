@@ -6,7 +6,7 @@
 /*   By: qjungo <qjungo@student.42lausanne.ch>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 15:52:19 by qjungo            #+#    #+#             */
-/*   Updated: 2022/12/01 15:58:19 by qjungo           ###   ########.fr       */
+/*   Updated: 2022/12/02 10:38:12 by qjungo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,13 +29,12 @@ static void	to_stack_top(t_list **stack, int val, t_stack s_from)
 	int			distance;
 	t_list		*ptr;
 	int			lstsize;
-	
+
 	ptr = *stack;
 	lstsize = ft_lstsize(ptr);
 	distance = 0;
 	while (*(int *)ptr->content != val && distance++ != -1)
 		ptr = get_next_(ptr, stack, stack, s_from);
-
 	if (distance > lstsize / 2)
 	{
 		if (s_from == A)
@@ -57,12 +56,12 @@ void	to_other_stack(t_list **a, t_list **b, int val, t_stack s_from)
 {
 	if (s_from == A)
 	{
-		to_stack_top(a, val, s_from); 
+		to_stack_top(a, val, s_from);
 		operation_handler(a, b, PB);
 	}
 	else
 	{
-		to_stack_top(b, val, s_from); 
+		to_stack_top(b, val, s_from);
 		operation_handler(a, b, PA);
 	}
 }

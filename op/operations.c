@@ -6,14 +6,14 @@
 /*   By: qjungo <qjungo@student.42lausanne.ch>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 15:52:24 by qjungo            #+#    #+#             */
-/*   Updated: 2022/12/01 15:52:25 by qjungo           ###   ########.fr       */
+/*   Updated: 2022/12/02 10:39:18 by qjungo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft/libft.h"
 
 ///	swap a/b - swap the to element at the top
-void	swap_top(t_list *stack) // SA & SB
+void	swap_top(t_list *stack)
 {
 	void	*temp_top_el;
 
@@ -32,21 +32,10 @@ void	push(t_list **stack_from, t_list **stack_to)
 
 	if (ft_lstsize(*stack_from) == 0)
 		return ;
-	to_push = *stack_from;		// set le to push
-	*stack_from = to_push->next;	// set le debut de la liste from
-	
-	to_push->next = *stack_to;	// set le next au debut de la stack
-	*stack_to = to_push;		// set le debut de la list to
-
-	/*
-	t_list	*to_del;
-
-	if (ft_lstsize(*stack_from) == 0)
-		return ;
-	ft_lstadd_front(stack_to, ft_lstnew((*stack_from)->content));
-	to_del = *stack_from;
-	*stack_from = to_del->next; // set le deuxieme comme le premier
-				    // */
+	to_push = *stack_from;
+	*stack_from = to_push->next;
+	to_push->next = *stack_to;
+	*stack_to = to_push;
 }
 
 void	rotate(t_list **stack)
@@ -58,7 +47,7 @@ void	rotate(t_list **stack)
 	*stack = top->next;
 	top->next = NULL;
 	bottom = ft_lstlast(*stack);
-	bottom->next = top;	
+	bottom->next = top;
 }
 
 void	r_rotate(t_list **stack)
@@ -67,14 +56,10 @@ void	r_rotate(t_list **stack)
 	t_list	*bottom;
 
 	lst = *stack;
-	while(lst->next->next) // get the avant dernier
+	while (lst->next->next)
 		lst = lst->next;
 	bottom = ft_lstlast(*stack);
 	bottom->next = *stack;
-	
-
 	lst->next = NULL;
-
-
 	*stack = bottom;
 }

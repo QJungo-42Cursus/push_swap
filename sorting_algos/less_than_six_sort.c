@@ -6,19 +6,25 @@
 /*   By: qjungo <qjungo@student.42lausanne.ch>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 15:52:10 by qjungo            #+#    #+#             */
-/*   Updated: 2022/12/01 15:52:11 by qjungo           ###   ########.fr       */
+/*   Updated: 2022/12/02 11:06:01 by qjungo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft/libft.h"
 #include "../push_swap.h"
 
-static void	send_lesser_greater(t_list **a, t_list **b, int pivot, t_stack current_stack, t_bool lesser)
+typedef struct s_norm {
+	int		pivot;
+	t_stack	current_stack;
+	t_bool	lesser;
+}	t_norm;
+
+static void	send_lesser_greater(t_list **a, t_list **b, t_norm norm)
 {
 	int		value;
 	t_list	*stack;
 
-	if (current_stack == A)
+	if (norm.current_stack == A)
 		stack = *a;
 	else
 		stack = *b;
@@ -26,24 +32,29 @@ static void	send_lesser_greater(t_list **a, t_list **b, int pivot, t_stack curre
 	{
 		value = *(int *)stack->content;
 		stack = stack->next;
-		if (lesser && value < pivot)
-			to_other_stack(a, b, value, current_stack);
-		else if (!lesser && value > pivot)
-			to_other_stack(a, b, value, current_stack);
+		if (norm.lesser && value < norm.pivot)
+			to_other_stack(a, b, value, norm.current_stack);
+		else if (!norm.lesser && value > norm.pivot)
+			to_other_stack(a, b, value, norm.current_stack);
 	}
 }
 
 void	less_than_six_sort(t_list **a, t_list **b, int size)
 {
-	int		pivot;
+	t_norm	norm;
 
-	send_lesser_greater(a, b, size - 2, A, TRUE);
+	norm.current_stack = A;
+	norm.lesser = TRUE;
+	norm.pivot = size - 2;
+	send_lesser_greater(a, b, norm);
 	three_sort(a, b);
-	pivot = size;
-	while (pivot != 0)
+	norm.pivot = size;
+	norm.current_stack = B;
+	norm.lesser = FALSE;
+	while (norm.pivot != 0)
 	{
-		send_lesser_greater(a, b, pivot, B, FALSE);
-		pivot--;
+		send_lesser_greater(a, b, norm);
+		norm.pivot--;
 	}
-	send_lesser_greater(a, b, pivot, B, FALSE);
+	send_lesser_greater(a, b, norm);
 }

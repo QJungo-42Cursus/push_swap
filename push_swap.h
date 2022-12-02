@@ -6,7 +6,7 @@
 /*   By: qjungo <qjungo@student.42lausanne.ch>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 15:52:55 by qjungo            #+#    #+#             */
-/*   Updated: 2022/12/01 16:00:13 by qjungo           ###   ########.fr       */
+/*   Updated: 2022/12/02 10:45:01 by qjungo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,8 @@ void	first_tri(t_list *a);
 int		get_littlest(t_list *a, int treshold);
 
 // op
-void	operation_handler(t_list **stack_a, t_list **stack_b, t_operation operation);
+void	operation_handler(t_list **stack_a,
+			t_list **stack_b, t_operation operation);
 void	swap_top(t_list *stack); // SA & SB
 void	push(t_list **stack_from, t_list **stack_to);
 void	rotate(t_list **stack);

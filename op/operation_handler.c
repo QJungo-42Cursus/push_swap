@@ -6,7 +6,7 @@
 /*   By: qjungo <qjungo@student.42lausanne.ch>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 15:51:41 by qjungo            #+#    #+#             */
-/*   Updated: 2022/12/01 15:51:42 by qjungo           ###   ########.fr       */
+/*   Updated: 2022/12/02 10:34:17 by qjungo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,13 +63,7 @@ static void	rotate_handler(t_list **stack_a, t_list **stack_b, t_operation op)
 
 void	operation_handler(t_list **stack_a, t_list **stack_b, t_operation op)
 {
-	//static int	calls = 0;
-	//calls++;
-	//ft_color(BLUE, 0);
-	//ft_printf("\t%d-", calls);
 	print_op(op);
-	//ft_color(RESET, 0);
-
 	if (op == SA)
 		swap_top(*stack_a);
 	else if (op == SB)

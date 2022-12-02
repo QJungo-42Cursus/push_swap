@@ -6,21 +6,21 @@
 /*   By: qjungo <qjungo@student.42lausanne.ch>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 15:51:57 by qjungo            #+#    #+#             */
-/*   Updated: 2022/12/01 15:55:17 by qjungo           ###   ########.fr       */
+/*   Updated: 2022/12/02 10:43:47 by qjungo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "libft/libft.h"
-# include "push_swap.h"
+#include "libft/libft.h"
+#include "push_swap.h"
 
 static int	init_stack(int argc, char **argv, t_list **stack);
 static int	test_list(int argc, char **argv);
 
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
 	t_list	*a;
 	t_list	*b;
-	
+
 	argc--;
 	argv++;
 	a = NULL;
@@ -65,7 +65,7 @@ static int	test_list(int argc, char **argv)
 	return (SUCCESS);
 }
 
-static int init_stack(int argc, char **argv, t_list **stack)
+static int	init_stack(int argc, char **argv, t_list **stack)
 {
 	int		i;
 	int		*numbers;

@@ -6,7 +6,7 @@
 /*   By: qjungo <qjungo@student.42lausanne.ch>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 15:51:25 by qjungo            #+#    #+#             */
-/*   Updated: 2022/12/01 15:51:25 by qjungo           ###   ########.fr       */
+/*   Updated: 2022/12/02 10:34:49 by qjungo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ static t_bool	is_sorted_order(t_list **a)
 	{
 		value = *(int *)ptr->content;
 		if (i != littlest && value == littlest)
-			break ; // on a fait le tour
+			break ;
 		if (value != i)
 			return (FALSE);
 		i++;
@@ -65,4 +65,3 @@ void	three_sort(t_list **a, t_list **b)
 			operation_handler(a, b, RA);
 	}
 }
-

@@ -17,11 +17,6 @@ SRCS =		main.c \
 
 OBJS =		$(SRCS:.c=.o)
 
-ifeq ($(shell uname), Linux)
-LEAKS =	valgrind -q --leak-check=full --track-origins=yes
-else 
-LEAKS = leaks -atExit -- 
-endif		
 
 all: $(NAME)
 
@@ -46,10 +41,15 @@ re: fclean all
 
 .PHONY: all clean fclean re
 
-
 ###  TESTS ALL  ###
 ARGS = 1 2 655 0 -80 700 701
 ARGS2 = 1 2 655 0 -80 700 701 -59 -95 -34 488 489 5000 -121 -199 -284739 -39 324
+
+ifeq ($(shell uname), Linux)
+LEAKS =	valgrind -q --leak-check=full --track-origins=yes
+else 
+LEAKS = leaks -atExit -- 
+endif		
 
 t: all
 	./push_swap $(ARGS)

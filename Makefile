@@ -30,11 +30,11 @@ $(NAME): $(OBJS)
 	$(CC) $(CFLAGS) $(OBJS) -L./libft -lft -o $(NAME) 
 
 clean:
-	#@make clean -C libft
+	@make clean -C libft
 	$(RM) $(OBJS)
 
 fclean: clean
-	#@make fclean -C libft
+	@make fclean -C libft
 	$(RM) $(NAME)
 
 re: fclean all

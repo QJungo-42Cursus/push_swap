@@ -2,7 +2,9 @@
 **Not a sorting algorithm (really not)**
 
 This project is introduced like it was a sorting algorithm.
+<br>
 You have two stack A and B. The stack A is fulled with unordered integers and your goal is to order them. (Fells like it's a sorting algorithm ? wait for the rest)
+<br>
 Here is the funny part : you are restricted to a limited set of operations :
 - sa (swap a)
 - sb (swap b )

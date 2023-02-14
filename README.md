@@ -16,5 +16,5 @@ Here is the funny part : you are restricted to a limited set of operations :
 - rrb (reverse rotate b)
 - rrr (rra and rrb)
 
-So it fells more like a game than a true sorting problem, but it is still interesting.
-My approach was to imitate to closest I could with the operations a merge sort. By doing a fixed amount of pass, it filtered the numbers.
+So it feels more like a game than a true sorting problem, but it is still interesting.
+My approach was to imitate (the closest I could with the operations) a merge sort. By doing a fixed amount of pass, it filtered the numbers.
